@@ -1,14 +1,14 @@
 const initialState = [
     {
-        id: 1,
-        title: "리액트 강의보기",
-        body: "챕터 1부터 챕터 12까지 학습",
+        id: 0,
+        title: "부자 되기",
+        body: "로또당첨기원 5000일차",
         isDone: false
     },
     {
-        id: 2,
-        title: "점심 먹기",
-        body: "점심 뭐먹지..?",
+        id: 1,
+        title: "집에 가고싶다",
+        body: "집에보내조",
         isDone: true
     }
 ];
@@ -21,23 +21,23 @@ const UPDATE_TO = 'main/UPDATE_TO';
 export const add_to = (title, body) => {
     return {
         type: ADD_TO,
-        title: title,
-        body: body,
+        title,
+        body,
     };
 };
 
-export const delete_to = (id) => {
+export const delete_to = (payload) => {
     return {
         type: DELETE_TO,
-        id,
+        payload,
     }
 }
 
 
-export const update_to = (id) => {
+export const update_to = (payload) => {
     return {
         type: UPDATE_TO,
-        id,
+        payload,
     }
 }
 
@@ -54,9 +54,10 @@ const todos = (state = initialState, action) => {
                 }
             ];
         case DELETE_TO:
-            return state.filter((list) => list.id !== action.id);
+            return state.filter((list) => list.id !== action.payload);
+
         case UPDATE_TO:
-            return
+            return state.map((list) => (list.id === action.payload.id ? { ...list, isDone: !action.payload.isDone } : list));
         // 기본값
         default:
             return state;

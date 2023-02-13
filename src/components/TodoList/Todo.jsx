@@ -53,21 +53,23 @@ const ButtonChange = styled.button`
 
 
 function Todo(item) {
-    console.log(item)
-    console.log(item.todo)
+    const todoSID = item.todo.id
+    const todoDone = item.todo.isDone
+    const todo = item.todo
+    console.log(todoDone)
 
     // payload로 보내기 
     const dispatch = useDispatch();
     // dispatch(add_to(title, body));
 
 
-    const onClickDeleteHandler = () => {
-        dispatch(delete_to(item.todo.id))
+    const onClickDeleteHandler = (payload) => {
+        dispatch(delete_to(payload))
         console.log(item.todo.id)
     }
 
-    const onClickDoneHandler = () => {
-        dispatch(update_to(item.todo.id))
+    const onClickDoneHandler = (payload) => {
+        dispatch(update_to(payload))
         console.log(item.todo.id)
     }
 
@@ -84,9 +86,10 @@ function Todo(item) {
 
 
             <ButtonList>
-                <ButtonDelete onClick={onClickDeleteHandler}>삭제</ButtonDelete>
+                {/* payload로 보내기 위해 함수에 인자값으로 아이디값 보냄 */}
+                <ButtonDelete onClick={() => onClickDeleteHandler(todoSID)}>삭제</ButtonDelete>
 
-                <ButtonChange onClick={onClickDoneHandler}>{item.todo.isDone ? "취 소" : "완 료"}</ButtonChange>
+                <ButtonChange onClick={() => onClickDoneHandler(todo)}>{item.todo.isDone ? "취 소" : "완 료"}</ButtonChange>
             </ButtonList>
         </TodoContainer >
     )
