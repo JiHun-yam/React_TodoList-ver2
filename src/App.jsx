@@ -1,23 +1,19 @@
 import './App.css';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main from './page/Main';
+// import TodoPage from '../page/TodoPage';
 function App() {
-  const data = useSelector((state) => {
-    return state.todos;
-  })
-  console.log(data[0])
-
-
-  const dispatch = useDispatch();
-
-
-
   return (
-    <div className="App">
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        {/* <Route path="/" element={<Main />} /> */}
+        {/* <Route path="/:id" element={<TodoPage />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+
 
 export default App;
