@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 import Headerarea from '../components/Header/Headerarea';
 import InputBox from '../components/InputBox/InputBox';
+import { useDispatch } from 'react-redux';
 
 
 function Main() {
@@ -31,8 +32,8 @@ function Main() {
 
     // 인풋박스 부분 
     const MainInputBox = styled.div`
-    
-         background: #D7E9B9;
+    margin-top: 20px;
+    background: #D7E9B9;
     border-radius: 12px;
     margin: 20px auto;
     display: flex;
@@ -45,7 +46,7 @@ function Main() {
     // todo 리스트
 
 
-
+ 
 
     const data = useSelector((state) => {
         return state.todos;
@@ -60,12 +61,14 @@ function Main() {
             </Header>
 
 
+            <MainInputBox>
+                <InputBox></InputBox>
+            </MainInputBox>
 
 
 
 
-
-        </Container>
+        </Container >
     )
 }
 
