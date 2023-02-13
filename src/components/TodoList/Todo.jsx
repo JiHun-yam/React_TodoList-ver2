@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux';
 import { delete_to, update_to } from '../../redux/modules/todos'
+import { useNavigate } from 'react-router-dom';
 
 // item Props 
 
@@ -10,7 +11,7 @@ import { delete_to, update_to } from '../../redux/modules/todos'
 
 const TodoContainer = styled.div`
     width: 240px;
-    height: 140px; 
+    height: 180px; 
     background: #FFFBEB;
     border-radius: 12px;
     padding: 12px 24px 24px 24px;
@@ -37,6 +38,14 @@ const ButtonDelete = styled.button`
     cursor: pointer;
     transition: all 0.2s ease-in;
     background-color: #FA7070;
+    opacity: 0.5;
+    &:hover{
+        opacity: 0.9;
+    }
+    &:focus{
+        opacity: 1;
+        transform: scale(1.1);
+    }
     
 `;
 const ButtonChange = styled.button`
@@ -47,6 +56,14 @@ const ButtonChange = styled.button`
     cursor: pointer;
     transition: all 0.2s ease-in;
     background-color: #93BFCF;
+    opacity: 0.5;
+    &:hover{
+        opacity: 0.9;
+    }
+    &:focus{
+        opacity: 1;
+        transform: scale(1.1);
+    }
     `;
 
 
@@ -54,13 +71,13 @@ const ButtonChange = styled.button`
 
 function Todo(item) {
     const todoSID = item.todo.id
-    const todoDone = item.todo.isDone
+
     const todo = item.todo
-    console.log(todoDone)
+
 
     // payload로 보내기 
     const dispatch = useDispatch();
-    // dispatch(add_to(title, body));
+
 
 
     const onClickDeleteHandler = (payload) => {
@@ -73,12 +90,24 @@ function Todo(item) {
         console.log(item.todo.id)
     }
 
+    const navigate = useNavigate();
+
+    const onClickDeatilPage = () => {
+        navigate(`/${item.todo.id}`, {
+            state: item.todo
+        })
+    }
+
 
     return (
         <TodoContainer>
 
             <div>
-
+                <p
+                    style={{
+                        textAlign: 'center'
+                    }}
+                    onClick={onClickDeatilPage}>상세 페이지</p>
                 <Todo_title>{item.todo.title}  </Todo_title>
                 <p>{item.todo.body}</p>
 
