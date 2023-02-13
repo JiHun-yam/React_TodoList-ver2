@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './page/Main';
 import TodoDetail from './components/TodoDetail/TodeDetail'
+import NotFound from './page/NotFound';
 
 // import TodoPage from '../page/TodoPage'; 
 function App() {
@@ -10,8 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/:id" element={<TodoDetail />} />
-        {/* <Route path="/*" element={<NotFound />} /> */}
-      </Routes>
+        <Route path="/*" element={<NotFound />} />       </Routes>
     </BrowserRouter>
   );
 }
