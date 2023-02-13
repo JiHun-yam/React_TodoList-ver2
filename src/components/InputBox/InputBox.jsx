@@ -5,7 +5,6 @@ import { add_to } from '../../redux/modules/todos'
 
 
 const HeaderInputBoxForm = styled.form`
-    
 background: #D7E9B9;
 border-radius: 12px;
 margin: 0 auto;
@@ -91,7 +90,7 @@ function InputBox() {
         if (title !== '' && body !== '') {
 
             dispatch(add_to(title, body));
-            alert('등록완료')
+           
             setTitle('');
             setBody('');
         }

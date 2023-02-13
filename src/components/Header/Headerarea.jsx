@@ -19,7 +19,7 @@ const HeaderTextH2 = styled.h2`
 function Header2() {
     return (
         <HeaderTextarea>
-            <HeaderTextH2>Ring Ring🧑🏻‍💻</HeaderTextH2>
+            <HeaderTextH2>HangHae 99 숙련과제 🌱</HeaderTextH2>
         </HeaderTextarea>
     )
 }
