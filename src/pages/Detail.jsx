@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
 
 const DIV = styled.div`
-    height: 100vh;
-`
+ `
 
 const DetailContainer = styled.div`
 
