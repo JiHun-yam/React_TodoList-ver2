@@ -63,7 +63,7 @@ const todos = (state = initialState, action) => {
             return state.filter((list) => list.id !== action.payload);
         case UPDATE_TO:
             // 지금누른값을 찾기위해 map으로 돌리고 맞는걸 찾아서 isDone 부분을 반대로 출력 
-            return state.map((list) => (list.id === action.payload.id ? { ...list, isDone: !action.payload.isDone } : list))
+            return state.map((list) => list.id === action.payload.id ? { ...list, isDone: !action.payload.isDone } : list)
         default:
             return state
     }
